@@ -164,7 +164,10 @@ input[type=file]{display:none}
 
 .character-crop-editor{display:flex;flex-direction:column;gap:8px;margin-top:12px;min-width:0}
 .character-crop-panel{border:1px solid var(--line,#b89a5b);padding:9px;background:var(--panel-bg,#fffdf7);min-width:0}
-.character-crop-panel>summary{cursor:pointer;font-size:12px;font-weight:700;color:var(--ink,#73552b);overflow-wrap:anywhere}
+.character-crop-panel strong{font-size:12px;color:var(--ink,#73552b);overflow-wrap:anywhere}
+.group .character-crop-panel .field{margin:9px 0 0!important}
+.character-crop-details{margin-top:8px}
+.character-crop-details>summary{cursor:pointer;font-size:12px;font-weight:700;color:var(--ink,#73552b);overflow-wrap:anywhere}
 .character-crop-controls-left{display:grid;grid-template-columns:1fr;gap:9px;margin-top:10px}
 .character-crop-slider{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--ink,#73552b)}
 .character-crop-slider input[type=range]{width:100%;min-width:0;margin:0}
@@ -740,19 +743,27 @@ const messageField=$('messagePreview');function fitMessage(){messageField.style.
 let charCount=0;
 function renderCharacterCropEditor(){
  const host=$('characterCropEditor'); if(!host)return;
- const expanded=new Set([...host.querySelectorAll('.character-crop-panel[open]')].map(panel=>panel.dataset.char));
+ const expanded=new Set([...host.querySelectorAll('.character-crop-details[open]')].map(section=>section.dataset.char));
  host.innerHTML='';
  const rows=[...document.querySelectorAll('#characters .character-row')];
  if(!rows.length){host.innerHTML='';return;}
  rows.forEach((row,i)=>{
   const img=row.querySelector('.char-image img');
-  const name=row.querySelector('.char-name').value.trim()||('캐릭터 '+(i+1));
-  const section=document.createElement('details');section.className='character-crop-panel';section.dataset.char=row.dataset.char;section.open=expanded.has(row.dataset.char);
-  const summary=document.createElement('summary');summary.textContent=name+' · 이미지 위치/크기';section.append(summary);
+  const previewName=row.querySelector('.char-name');
+  const name=previewName.value.trim()||('캐릭터 '+(i+1));
+  const panel=document.createElement('div');panel.className='character-crop-panel';panel.dataset.char=row.dataset.char;
+  const title=document.createElement('strong');title.textContent='정실 · '+(previewName.value.trim()||((i+1)+'번 칸'));panel.append(title);
+  const nameField=document.createElement('div');nameField.className='field';
+  const nameLabel=document.createElement('label');nameLabel.textContent='이름';nameLabel.htmlFor='characterNameEditor'+row.dataset.char;
+  const nameInput=document.createElement('input');nameInput.type='text';nameInput.id=nameLabel.htmlFor;nameInput.placeholder='캐릭터 이름';nameInput.value=previewName.value;
+  nameInput.addEventListener('input',()=>{previewName.value=nameInput.value;title.textContent='정실 · '+(nameInput.value.trim()||((i+1)+'번 칸'));});
+  nameField.append(nameLabel,nameInput);panel.append(nameField);
+  const section=document.createElement('details');section.className='character-crop-details';section.dataset.char=row.dataset.char;section.open=expanded.has(row.dataset.char);
+  const summary=document.createElement('summary');summary.textContent='이미지 위치/크기';section.append(summary);
   const controls=document.createElement('div');controls.className='character-crop-controls-left';
   const defs=[['cropX','가로 위치',0,100,Number(img?.dataset.cropX||50)],['cropY','세로 위치',0,100,Number(img?.dataset.cropY||50)],['cropZoom','확대 / 축소',100,250,Number(img?.dataset.cropZoom||100)]];
   defs.forEach(([key,label,min,max,value])=>{const wrap=document.createElement('label');wrap.className='character-crop-slider';wrap.append(document.createTextNode(label));const input=document.createElement('input');input.type='range';input.min=min;input.max=max;input.value=value;input.disabled=!img;input.setAttribute('aria-label',name+' '+label);input.addEventListener('input',()=>{const current=row.querySelector('.char-image img');if(!current)return;current.dataset[key]=input.value;applyImageCrop(current);});wrap.append(input);controls.append(wrap);});
-  const help=document.createElement('p');help.className='help';help.textContent=img?'이 캐릭터 이미지에만 적용됩니다.':'먼저 이 캐릭터 칸에 이미지를 추가하세요.';controls.append(help);section.append(controls);host.append(section);
+  const help=document.createElement('p');help.className='help';help.textContent=img?'이 캐릭터 이미지에만 적용됩니다.':'먼저 이 캐릭터 칸에 이미지를 추가하세요.';controls.append(help);section.append(controls);panel.append(section);host.append(panel);
  });
 }
 function removeCharacterRow(row){
