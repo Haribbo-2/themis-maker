@@ -26,6 +26,7 @@ button{cursor:pointer}
   width:100%;border:1px solid #d5d5d8;border-radius:7px;padding:8px 9px;background:#fff;color:#222;min-width:0
 }
 .field textarea{min-height:66px;resize:vertical;overflow:hidden}
+.controls .field select{appearance:none;padding-right:38px;background-color:#fff;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' fill='none' stroke='%23555' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;background-size:12px 8px}
 .inline{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .color-field{display:grid;grid-template-columns:1fr 44px;align-items:center;gap:8px}
 .color-field input[type="color"]{width:44px;height:34px;padding:2px;border:1px solid #ddd;border-radius:6px;background:white}
@@ -58,10 +59,10 @@ input[type=file]{display:none}
 .content-edit::placeholder{color:currentColor;opacity:.52}
 
 .note{align-self:stretch;border:var(--line-width) solid var(--line);background:var(--panel-bg);padding:9px 11px;display:flex;flex-direction:column;min-height:70px;flex:1;order:1}
-.section-title{font-size:.95em;margin:0 0 7px;font-weight:600;letter-spacing:.02em}
+.section-title{font-size:12pt;margin:0 0 7px;font-weight:600;letter-spacing:.02em}
 .note .section-title{padding-bottom:6px;border-bottom:1px solid var(--line)}
 .info-box .section-title{padding-bottom:6px;border-bottom:1px solid var(--line)}
-.content-edit{background:transparent;border:0;color:inherit;outline:none;resize:none;width:100%;min-height:96px;height:auto;flex:1;font:inherit;line-height:1.5;overflow:hidden;white-space:pre-wrap;overflow-wrap:anywhere}
+.content-edit{background:transparent;border:0;color:inherit;outline:none;resize:none;width:100%;min-height:96px;height:auto;flex:1;font:inherit;font-size:10pt;line-height:1.5;overflow:hidden;white-space:pre-wrap;overflow-wrap:anywhere}
 .middle{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto auto;gap:10px;min-height:0;padding:0}
 .info-box{border:var(--line-width) solid var(--line);background:var(--panel-bg);padding:9px 11px;display:flex;flex-direction:column;min-height:0;min-width:0}
 .info-box:nth-child(1){grid-column:1;grid-row:1}
@@ -87,7 +88,7 @@ input[type=file]{display:none}
 .theme-fallen{--page-bg:#211e25;--card-bg:#211e25;--ink:#e8dfe9;--line:#8f718e;--panel-bg:rgba(255,255,255,.035)}
 
 .choice-editor{display:flex;flex-wrap:wrap;gap:6px}.choice-chip{border:1px solid #d3d5da;background:#fff;border-radius:7px;padding:7px 9px;font-size:12px;color:#333}.choice-chip.active{background:#263a5a;color:#fff;border-color:#263a5a}
-.selected-tags{display:flex;flex-wrap:wrap;align-content:flex-start;gap:5px;min-height:18px;overflow:visible}.preview-tag{display:inline-block;border:1px solid var(--line);border-radius:3px;padding:3px 6px;font-size:.78em;line-height:1.2;color:var(--ink);background:var(--panel-bg);overflow-wrap:anywhere}
+.selected-tags{display:flex;flex-wrap:wrap;align-content:flex-start;gap:5px;min-height:18px;overflow:visible}.preview-tag{display:inline-block;border:1px solid var(--line);border-radius:3px;padding:3px 6px;font-size:var(--choice-tag-size,9pt);line-height:1.2;color:var(--choice-tag-color,var(--ink));background:var(--panel-bg);overflow-wrap:anywhere}
 .choice-row-break{flex-basis:100%;height:0}
 .profile-card{aspect-ratio:auto;height:auto;min-height:0;overflow:visible;overflow-wrap:anywhere}.card-inner{height:auto;grid-template-rows:auto auto auto;gap:12px}
 .middle{grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto auto;gap:10px;padding:4px 0}.info-box:nth-child(1){grid-column:1;grid-row:1}.info-box:nth-child(2){grid-column:2;grid-row:1}.info-box:nth-child(3){grid-column:1;grid-row:2}.info-box:nth-child(4){grid-column:2;grid-row:2}.info-box.extra-box{grid-column:3;grid-row:1 / span 2}.info-box{min-height:95px;height:auto;overflow:visible}.note{grid-column:3;grid-row:1 / span 2;min-height:0;height:auto;overflow:visible}.bottom{overflow:visible}
@@ -131,22 +132,27 @@ input[type=file]{display:none}
 }
 
 /* Character row returned to compact image size; name sits immediately beside image. */
-.character-row{grid-template-columns:34% minmax(0,1fr) 12%;height:auto;min-height:64px;gap:8px;align-items:stretch;}
-.char-image{height:64px;min-height:64px;max-height:64px;}
+.character-row{grid-template-columns:34% minmax(0,1fr) 12%;height:auto;min-height:100px;gap:8px;align-items:stretch;}
+.char-image{height:100px;min-height:100px;max-height:100px;}
 .char-fields{display:flex;align-items:stretch;justify-content:flex-start;min-width:0;}
-.char-name{height:64px;min-height:64px;width:100%;text-align:left;font-weight:700;}
+.char-name{height:100px;min-height:100px;width:100%;text-align:left;font-weight:700;}
 .character-row .remove-char{width:100%;height:44px;min-height:44px;align-self:center;justify-self:stretch;font-size:.68em;padding:3px;line-height:1.1;overflow-wrap:anywhere;}
 
 /* Long text expands the writing area; never scroll or clip the typed content. */
 .note, .content-edit{overflow:visible;}
 .content-edit{display:block;resize:none;min-height:96px;height:auto;flex:none;white-space:pre-wrap;overflow-wrap:anywhere;}
 .profile-card, .card-inner, .middle, .bottom, .info-box{overflow:visible;}
-@media (max-width:900px){.character-row{grid-template-columns:34% minmax(0,1fr) 12%;}.char-image{height:64px;min-height:64px;max-height:64px}.char-name{height:64px;min-height:64px}.character-row .remove-char{height:44px;min-height:44px;}}
-@media (max-width:520px){.character-row{grid-template-columns:34% minmax(0,1fr) 12%;}.char-image{height:64px;min-height:64px;max-height:64px}.char-name{height:64px;min-height:64px}.character-row .remove-char{height:44px;min-height:44px;}}
+@media (max-width:900px){.character-row{grid-template-columns:34% minmax(0,1fr) 12%;}.char-image{height:100px;min-height:100px;max-height:100px}.char-name{height:100px;min-height:100px}.character-row .remove-char{height:44px;min-height:44px;}}
+@media (max-width:520px){.character-row{grid-template-columns:34% minmax(0,1fr) 12%;}.char-image{height:100px;min-height:100px;max-height:100px}.char-name{height:100px;min-height:100px}.character-row .remove-char{height:44px;min-height:44px;}}
 
 
 /* Character image crop controls live directly beneath each character slot. */
-#characters .character-row{height:auto;min-height:0;grid-template-columns:34% minmax(0,1fr) 12%;grid-template-rows:64px auto;}
+#characters .character-row{height:auto;min-height:0;grid-template-columns:34% minmax(0,1fr) 12%;grid-template-rows:100px auto;}
+#characters .character-row-actions{display:flex;flex-direction:column;gap:2px;align-self:stretch;min-width:0;height:100px;position:relative;z-index:3}
+#characters .character-row-actions button{width:100%;min-width:0;border:var(--line-width) solid var(--line);border-radius:0;background:var(--panel-bg);color:var(--ink);padding:0}
+#characters .character-row-actions .move-char{height:24px;min-height:24px;flex:none;font-size:13px;line-height:1}
+#characters .character-row-actions .move-char:disabled{opacity:.4;cursor:default}
+#characters .character-row-actions .remove-char{height:auto;min-height:0;flex:1;align-self:stretch;justify-self:stretch;font-size:.68em;line-height:1.1;padding:2px}
 #characters .char-crop-controls{grid-column:1 / -1;min-width:0;border:1px solid var(--line);padding:7px 9px;background:var(--panel-bg);}
 #characters .char-crop-controls summary{cursor:pointer;font-size:12px;font-weight:700;color:var(--ink);}
 #characters .char-crop-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:8px;}
@@ -166,7 +172,8 @@ input[type=file]{display:none}
 
 .detail-tools{margin-top:12px;border:0;padding:0}.detail-tools>summary{cursor:pointer;list-style:none;font-size:12px;font-weight:700;color:#475569;padding:0;margin:0 0 8px}.detail-tools>summary::-webkit-details-marker{display:none}.detail-tools>summary:before{content:"▸ ";}.detail-tools[open]>summary:before{content:"▾ ";}.detail-tools-body{padding-top:0}.detail-tools-body[hidden]{display:none}
 [hidden]{display:none!important}
-#choiceTextSize, #characterTextSize{width:100%;}
+#sectionTitleSize, #choiceTextSize, #freeTextSize, #characterTextSize{width:100%;}
+.size-sync{display:flex;align-items:center;gap:7px;cursor:pointer}.size-sync input{margin:0}
 #bgOpacity, #bgGradient{width:100%;min-width:0;}
 
 .char-fields{align-items:center!important}.char-name{display:flex!important;align-items:center!important;justify-content:flex-start!important;box-sizing:border-box!important;}
@@ -311,6 +318,7 @@ input[type=file]{display:none}
   border-radius:50%;overflow:hidden;isolation:isolate;background:var(--panel-bg);
 }
 .avatar img{position:absolute;left:-10%;top:-10%;display:block;width:120%;height:120%;max-width:none;max-height:none;object-fit:cover;object-position:var(--crop-x,50%) var(--crop-y,50%);transform:translate(var(--crop-pan-x,0%),var(--crop-pan-y,0%)) scale(var(--crop-zoom,1));transform-origin:center;}
+.avatar .export-cropped-canvas,.char-image .export-cropped-canvas{position:absolute;inset:0;display:block;width:100%;height:100%;z-index:1;pointer-events:none}
 .profile-name-row{
   grid-column:2;grid-row:1;min-width:0;
   display:flex;flex-direction:column;align-items:flex-start;
@@ -435,13 +443,16 @@ input[type=file]{display:none}
 <div class="group">
 <h2>선택지 편집</h2>
 <div class="field"><label for="choiceTarget">선택지 항목</label><select id="choiceTarget">
-<option value="genre">THEMIS</option><option value="tendency">성향</option><option value="fandom">트윗</option><option value="mine">NG</option>
+<option value="genre">THEMIS</option><option value="tendency">성향</option><option value="fandom">트윗</option><option value="mine">NG</option><option value="free">Free</option>
 </select></div>
+<div class="field" hidden id="freeEditorField"><label for="freeEditor">Free 내용</label><textarea id="freeEditor" placeholder="자유롭게 적어주세요."></textarea></div>
 <div class="choice-editor" id="choiceEditor"></div>
-<div class="field"><label for="customOption">선택지 직접 추가</label><div class="inline"><input id="customOption" placeholder="새 선택지" type="text"/><button class="btn primary" id="addOption">＋ 추가</button></div></div>
+<div class="field" id="customOptionField"><label for="customOption">선택지 직접 추가</label><div class="inline"><input id="customOption" placeholder="새 선택지" type="text"/><button class="btn primary" id="addOption">＋ 추가</button></div></div>
 <details class="detail-tools"><summary>세부 편집</summary><div class="detail-tools-body">
-<div class="inline"><div class="field"><label for="choiceTextSize">글자 크기 (pt)</label><input id="choiceTextSize" max="200" min="1" step="1" type="number" value="12"/></div><div class="field"><label for="choiceTextColor">글자색</label><div class="color-field"><input aria-label="선택지 글자색 코드" id="choiceTextHex" type="text" value="#73552b"/><input id="choiceTextColor" type="color" value="#73552b"/></div></div></div>
-<div class="field"><label style="display:flex;align-items:center;gap:8px"><input id="choiceStyleAll" type="checkbox"/> 모든 글자 스타일 편집 통합</label></div>
+<div class="field"><label for="choiceTextColor">글자색</label><div class="color-field"><input aria-label="선택지 글자색 코드" id="choiceTextHex" type="text" value="#73552b"/><input id="choiceTextColor" type="color" value="#73552b"/></div><label class="size-sync"><input id="choiceColorAll" type="checkbox"/> 글자색 통합</label></div>
+<div class="field"><label for="sectionTitleSize">선택지 항목 글자 크기 (pt)</label><input id="sectionTitleSize" max="200" min="1" step="1" type="number" value="12"/><label class="size-sync"><input id="sectionTitleSizeAll" type="checkbox"/> 선택지 항목 글자 크기 통합</label></div>
+<div class="field"><label for="choiceTextSize">선택지 글자 크기 (pt)</label><input id="choiceTextSize" max="200" min="1" step="1" type="number" value="9"/><label class="size-sync"><input id="choiceTextSizeAll" type="checkbox"/> 선택지 글자 크기 통합</label></div>
+<div class="field"><label for="freeTextSize">Free 내용 글자 크기 (pt)</label><input id="freeTextSize" max="200" min="1" step="1" type="number" value="10"/></div>
 </div></details>
 </div>
 <div class="group">
@@ -487,7 +498,7 @@ input[type=file]{display:none}
 </div>
 </section>
 <section class="bottom">
-<div class="char-actions"><strong style="font-size:.95em">캐릭터</strong><button class="btn" id="addCharacterInline" type="button">＋ 추가</button></div>
+<div class="char-actions"><strong style="font-size:.95em">정실</strong><button class="btn" id="addCharacterInline" type="button">＋ 추가</button></div>
 <div class="characters" id="characters"></div>
 </section>
 </div>
@@ -505,7 +516,7 @@ const themes={
  xenos:{title:'XENOS',bg:'#e7edf3',ink:'#354a62',line:'#9aafc3',panel:'#f6f9fc'},
  fallen:{title:'APSU',bg:'#211e25',ink:'#e8dfe9',line:'#8f718e',panel:'#302b34'}
 };
-let choices={genre:['가급구','빌대환','언합흐','베스탈','귀소'],tendency:['HL','BL','GL','NCP','NPC×NPC','온리','1T1D','배려 O','배려 X'],fandom:['글','그림','썰','ai 짤','로그','소비','RT','마음','멘션','탐라 대화','인용 대화','일상','사담','욕설','우울','폭력','R-18','G-18','주접'],mine:['캐혐','욕설','견제','저격','R-18','G-18','실사','무시','뮤트','블락','직멘 제외 무시 가능']};
+let choices={genre:['가급구','빌대환','언합흐','베스탈','귀소'],tendency:['드림','HL','BL','GL','NCP','NPC×NPC','온리','1T1D','배려 O','배려 X'],fandom:['글','그림','썰','ai 짤','로그','소비','RT','마음','멘션','탐라 대화','인용 대화','일상','사담','욕설','우울','폭력','R-18','G-18','주접'],mine:['캐혐','욕설','견제','저격','R-18','G-18','실사','무시','뮤트','블락','직멘 제외 무시 가능']};
 const ngFollowupOptions=new Set(['무시','뮤트','블락','직멘 제외 무시 가능']);
 const initialChoices=Object.fromEntries(Object.entries(choices).map(([key,items])=>[key,[...items]]));
 let selected={genre:[],tendency:[],fandom:[],mine:[]};
@@ -527,7 +538,9 @@ function setColor(kind,val){
  if(kind==='ink'){
   $('choiceTextColor').value=val;
   $('choiceTextHex').value=val;
-  card.querySelectorAll('.info-box .selected-tags, .info-box .section-title').forEach(el=>el.style.color=val);
+  choiceSectionKeys.forEach(key=>{choiceColorState[key]=val;});
+  card.querySelectorAll('.info-box .selected-tags').forEach(el=>{el.style.color=val;el.style.removeProperty('--choice-tag-color');});
+  card.querySelectorAll('.info-box .section-title, .note .section-title, .note .content-edit').forEach(el=>el.style.color=val);
   $('nicknamePreview').style.color='';
   $('twitterPreview').style.color='';
  }
@@ -565,14 +578,33 @@ function applyTextStyle(sizeId,colorId,hexId,targets){
  targets.forEach(el=>{if(el){el.style.fontSize=size;el.style.color=color;}});
 }
 function syncTextHex(colorId,hexId,apply){$(colorId).addEventListener('input',()=>{ $(hexId).value=$(colorId).value; apply(); });$(hexId).addEventListener('change',()=>{if(/^#[0-9a-f]{6}$/i.test($(hexId).value)){ $(colorId).value=$(hexId).value;apply(); }});}
-function choiceTextTargets(target){
- const map={genre:'genrePreview',tendency:'tendencyPreview',fandom:'fandomPreview',mine:'minePreview'};
- const ids=$('choiceStyleAll').checked?Object.values(map):[map[target||$('choiceTarget').value]];
- return ids.filter(Boolean).flatMap(id=>{const tags=$(id);const box=tags?.closest('.info-box');return [tags,...(box?[box.querySelector('.section-title')]:[])].filter(Boolean)});
+const choiceSectionKeys=['genre','tendency','fandom','mine','free'];
+const choiceColorState={};
+function choiceSectionTitle(key){return key==='free'?document.querySelector('.note .section-title'):tagContainers[key]?.closest('.info-box')?.querySelector('.section-title');}
+function ptValue(id){const value=Number($(id).value);return Number.isFinite(value)&&value>=1&&value<=200?value:null;}
+function applySectionTitleSize(){const size=ptValue('sectionTitleSize');if(size===null)return;const keys=$('sectionTitleSizeAll').checked?choiceSectionKeys:[$('choiceTarget').value];keys.forEach(key=>{const title=choiceSectionTitle(key);if(title)title.style.fontSize=size+'pt';});}
+function applyChoiceOptionSize(){const size=ptValue('choiceTextSize'),target=$('choiceTarget').value;if(size===null||target==='free')return;const keys=$('choiceTextSizeAll').checked?Object.keys(tagContainers):[target];keys.forEach(key=>tagContainers[key].style.setProperty('--choice-tag-size',size+'pt'));}
+function applyFreeTextSize(){const size=ptValue('freeTextSize');if(size===null)return;$('messagePreview').style.fontSize=size+'pt';fitMessage();queuePixelSizeUpdate();}
+function applyChoiceColor(){
+ const color=$('choiceTextColor').value;$('choiceTextHex').value=color;
+ const keys=$('choiceColorAll').checked?choiceSectionKeys:[$('choiceTarget').value];keys.forEach(key=>{
+  choiceColorState[key]=color;
+  const title=choiceSectionTitle(key);if(title)title.style.color=color;
+  if(key==='free')$('messagePreview').style.color=color;
+  else tagContainers[key].style.setProperty('--choice-tag-color',color);
+ });
+}
+function syncChoiceSizeControls(){
+ const key=$('choiceTarget').value;
+ $('sectionTitleSize').value=parseFloat(choiceSectionTitle(key)?.style.fontSize)||12;
+ $('choiceTextSize').value=parseFloat(tagContainers[key]?.style.getPropertyValue('--choice-tag-size'))||9;
+ $('choiceTextSize').disabled=key==='free';
+ $('choiceTextSizeAll').disabled=key==='free';
+ const hex=choiceColorState[key]||$('inkColor').value;
+ $('choiceTextColor').value=hex;$('choiceTextHex').value=hex;
 }
 function profileTextTargets(){return [$('nicknamePreview'),$('twitterPreview'),$('agePreview'),$('profileExtraPreview')];}
 function characterTextTargets(){return [...document.querySelectorAll('.char-name')];}
-function applyChoiceText(){applyTextStyle('choiceTextSize','choiceTextColor','choiceTextHex',choiceTextTargets());}
 // 프로필의 글자 크기는 CSS에 고정합니다. 이 기능은 색상만 바꿉니다.
 function applyProfileColor(){
  const color=$('profileTextColor').value;
@@ -580,9 +612,12 @@ function applyProfileColor(){
  profileTextTargets().forEach(el=>{if(el)el.style.color=color;});
 }
 function applyCharacterText(){applyTextStyle('characterTextSize','characterTextColor','characterTextHex',characterTextTargets());}
-$('choiceTextSize').addEventListener('change',applyChoiceText);syncTextHex('choiceTextColor','choiceTextHex',applyChoiceText);
-$('choiceStyleAll').addEventListener('change',applyChoiceText);
-$('choiceTarget').addEventListener('change',()=>{renderChoiceEditor();applyChoiceText();});
+['sectionTitleSize','choiceTextSize','freeTextSize'].forEach((id,i)=>$(id).addEventListener('input',[applySectionTitleSize,applyChoiceOptionSize,applyFreeTextSize][i]));
+syncTextHex('choiceTextColor','choiceTextHex',applyChoiceColor);
+$('choiceColorAll').addEventListener('change',e=>{if(e.target.checked)applyChoiceColor();});
+$('sectionTitleSizeAll').addEventListener('change',e=>{if(e.target.checked)applySectionTitleSize();});
+$('choiceTextSizeAll').addEventListener('change',e=>{if(e.target.checked)applyChoiceOptionSize();});
+$('choiceTarget').addEventListener('change',()=>{renderChoiceEditor();syncChoiceSizeControls();});
 syncTextHex('profileTextColor','profileTextHex',applyProfileColor);
 $('characterTextSize').addEventListener('change',applyCharacterText);syncTextHex('characterTextColor','characterTextHex',applyCharacterText);
 
@@ -687,26 +722,32 @@ $('bgGradient').addEventListener('change',updateBackgroundGradient);
 $('clearBg').addEventListener('click',()=>{if(bgUrl)URL.revokeObjectURL(bgUrl);bgUrl=null;card.style.setProperty('--bg-image','none');$('bgImage').value='';});
 function renderChoiceEditor(){
  const target=$('choiceTarget').value,host=$('choiceEditor');host.innerHTML='';
+ const isFree=target==='free';
+ $('freeEditorField').hidden=!isFree;
+ host.hidden=isFree;
+ $('customOptionField').hidden=isFree;
+ if(isFree){$('freeEditor').value=$('messagePreview').value;return;}
  const values=choices[target]||[];
  const ordered=target==='mine'?[...values.filter(v=>!ngFollowupOptions.has(v)),...values.filter(v=>ngFollowupOptions.has(v))]:values;
  let followupStarted=false;
  ordered.forEach(value=>{if(target==='mine'&&ngFollowupOptions.has(value)&&!followupStarted){appendChoiceRowBreak(host);followupStarted=true;}const b=document.createElement('button');b.type='button';b.className='choice-chip'+(selected[target].includes(value)?' active':'');b.textContent=value;b.addEventListener('click',()=>{selected[target]=selected[target].includes(value)?selected[target].filter(v=>v!==value):[...selected[target],value];renderChoiceEditor();renderSelectedTags();});host.append(b);});
 }
 function appendChoiceRowBreak(host){const br=document.createElement('span');br.className='choice-row-break';br.setAttribute('aria-hidden','true');host.append(br);}
-function renderSelectedTags(){Object.keys(tagContainers).forEach(target=>{const host=tagContainers[target];host.innerHTML='';const values=selected[target];const first=target==='mine'?values.filter(v=>!ngFollowupOptions.has(v)):values;const followup=target==='mine'?values.filter(v=>ngFollowupOptions.has(v)):[];const appendTag=value=>{const tag=document.createElement('span');tag.className='preview-tag';tag.textContent=value;host.append(tag);};first.forEach(appendTag);if(first.length&&followup.length)appendChoiceRowBreak(host);followup.forEach(appendTag);});applyChoiceText();}
-$('choiceTarget').addEventListener('change',renderChoiceEditor);
-$('addOption').addEventListener('click',()=>{const target=$('choiceTarget').value,val=$('customOption').value.trim();if(val&&!choices[target].includes(val)){choices[target].push(val);selected[target].push(val);$('customOption').value='';renderChoiceEditor();renderSelectedTags();}});
+function renderSelectedTags(){Object.keys(tagContainers).forEach(target=>{const host=tagContainers[target];host.innerHTML='';const values=selected[target];const first=target==='mine'?values.filter(v=>!ngFollowupOptions.has(v)):values;const followup=target==='mine'?values.filter(v=>ngFollowupOptions.has(v)):[];const appendTag=value=>{const tag=document.createElement('span');tag.className='preview-tag';tag.textContent=value;host.append(tag);};first.forEach(appendTag);if(first.length&&followup.length)appendChoiceRowBreak(host);followup.forEach(appendTag);});}
+$('addOption').addEventListener('click',()=>{const target=$('choiceTarget').value,val=$('customOption').value.trim();if(target==='free')return;if(val&&!choices[target].includes(val)){choices[target].push(val);selected[target].push(val);$('customOption').value='';renderChoiceEditor();renderSelectedTags();}});
 $('customOption').addEventListener('keydown',e=>{if(e.key==='Enter')$('addOption').click();});
-const messageField=$('messagePreview');function fitMessage(){messageField.style.height='auto';const h=Math.max(96,messageField.scrollHeight);messageField.style.height=h+'px';messageField.style.overflow='visible';const note=messageField.closest('.note');if(note){note.style.height='auto';note.style.minHeight=(h+45)+'px';}}messageField.addEventListener('input',fitMessage);messageField.addEventListener('change',fitMessage);fitMessage();
+const messageField=$('messagePreview');function fitMessage(){messageField.style.height='auto';const h=Math.max(96,messageField.scrollHeight);messageField.style.height=h+'px';messageField.style.overflow='visible';const note=messageField.closest('.note');if(note){note.style.height='auto';note.style.minHeight=(h+45)+'px';}}messageField.addEventListener('input',()=>{$('freeEditor').value=messageField.value;fitMessage();});messageField.addEventListener('change',fitMessage);$('freeEditor').addEventListener('input',e=>{messageField.value=e.target.value;fitMessage();queuePixelSizeUpdate();});fitMessage();
 let charCount=0;
 function renderCharacterCropEditor(){
- const host=$('characterCropEditor'); if(!host)return; host.innerHTML='';
+ const host=$('characterCropEditor'); if(!host)return;
+ const expanded=new Set([...host.querySelectorAll('.character-crop-panel[open]')].map(panel=>panel.dataset.char));
+ host.innerHTML='';
  const rows=[...document.querySelectorAll('#characters .character-row')];
  if(!rows.length){host.innerHTML='';return;}
  rows.forEach((row,i)=>{
   const img=row.querySelector('.char-image img');
   const name=row.querySelector('.char-name').value.trim()||('캐릭터 '+(i+1));
-  const section=document.createElement('details');section.className='character-crop-panel';section.open=false;
+  const section=document.createElement('details');section.className='character-crop-panel';section.dataset.char=row.dataset.char;section.open=expanded.has(row.dataset.char);
   const summary=document.createElement('summary');summary.textContent=name+' · 이미지 위치/크기';section.append(summary);
   const controls=document.createElement('div');controls.className='character-crop-controls-left';
   const defs=[['cropX','가로 위치',0,100,Number(img?.dataset.cropX||50)],['cropY','세로 위치',0,100,Number(img?.dataset.cropY||50)],['cropZoom','확대 / 축소',100,250,Number(img?.dataset.cropZoom||100)]];
@@ -720,18 +761,37 @@ function removeCharacterRow(row){
  if(image)URL.revokeObjectURL(image.src);
  row.remove();
  renderCharacterCropEditor();
+ updateCharacterOrderButtons();
  $('removeCharacter').disabled=!$('characters').children.length;
+}
+function updateCharacterOrderButtons(){
+ const rows=[...$('characters').querySelectorAll('.character-row')];
+ rows.forEach((row,i)=>{
+  row.querySelector('.move-char-up').disabled=i===0;
+  row.querySelector('.move-char-down').disabled=i===rows.length-1;
+ });
+}
+function moveCharacterRow(row,direction){
+ const sibling=direction<0?row.previousElementSibling:row.nextElementSibling;
+ if(!sibling)return;
+ if(direction<0)$('characters').insertBefore(row,sibling);
+ else $('characters').insertBefore(sibling,row);
+ updateCharacterOrderButtons();
+ renderCharacterCropEditor();
+ queuePixelSizeUpdate();
 }
 $('removeCharacter').addEventListener('click',()=>removeCharacterRow($('characters').lastElementChild));
 function addCharacter(){
  charCount++;const n=charCount;
  const row=document.createElement('div');row.className='character-row';row.dataset.char=n;
- row.innerHTML=`<label class="char-image"><span class="image-placeholder">＋<br>이미지 추가</span><input type="file" accept="image/*" hidden></label><div class="char-fields"><input class="char-name" type="text" placeholder="캐릭터 이름" aria-label="캐릭터 이름"></div><button type="button" class="btn remove-char">칸 삭제</button>`;
+ row.innerHTML=`<label class="char-image"><span class="image-placeholder">＋<br>이미지 추가</span><input type="file" accept="image/*" hidden></label><div class="char-fields"><input class="char-name" type="text" placeholder="캐릭터 이름" aria-label="캐릭터 이름"></div><div class="character-row-actions"><button type="button" class="move-char move-char-up" aria-label="캐릭터 칸 위로 이동" title="위로 이동">▲</button><button type="button" class="move-char move-char-down" aria-label="캐릭터 칸 아래로 이동" title="아래로 이동">▼</button><button type="button" class="btn remove-char">칸 삭제</button></div>`;
  const file=row.querySelector('input[type=file]'), label=row.querySelector('.char-image');
  file.addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const old=label.querySelector('img');if(old)URL.revokeObjectURL(old.src);label.querySelectorAll('img,.image-placeholder').forEach(el=>el.remove());const img=document.createElement('img');img.src=URL.createObjectURL(f);img.alt='캐릭터 이미지';img.dataset.cropX='50';img.dataset.cropY='50';img.dataset.cropZoom='100';applyImageCrop(img);label.prepend(img);renderCharacterCropEditor();});
  row.querySelector('.remove-char').addEventListener('click',()=>removeCharacterRow(row));
+ row.querySelector('.move-char-up').addEventListener('click',()=>moveCharacterRow(row,-1));
+ row.querySelector('.move-char-down').addEventListener('click',()=>moveCharacterRow(row,1));
  row.querySelector('.char-name').addEventListener('input',renderCharacterCropEditor);
- $('characters').append(row);$('removeCharacter').disabled=false;applyCharacterText();renderCharacterCropEditor();refreshCropTargets();
+ $('characters').append(row);$('removeCharacter').disabled=false;applyCharacterText();renderCharacterCropEditor();updateCharacterOrderButtons();refreshCropTargets();
 }
 $('addCharacter').addEventListener('click',addCharacter);
 $('addCharacterInline').addEventListener('click',addCharacter);
@@ -779,17 +839,45 @@ function loadHtml2Canvas(){
  });
  return window.__html2canvasLoading;
 }
+function waitForCropImage(img){
+ if(img.complete)return img.naturalWidth?Promise.resolve():Promise.reject(new Error('이미지를 불러오지 못했습니다.'));
+ return new Promise((resolve,reject)=>{
+  img.addEventListener('load',resolve,{once:true});
+  img.addEventListener('error',()=>reject(new Error('이미지를 불러오지 못했습니다.')),{once:true});
+ });
+}
+function createCroppedExportCanvas(img){
+ const frame=img.parentElement;
+ const frameRect=frame.getBoundingClientRect(),imageRect=img.getBoundingClientRect();
+ const frameStyle=getComputedStyle(frame);
+ const width=frame.clientWidth,height=frame.clientHeight;
+ const canvas=document.createElement('canvas');canvas.className='export-cropped-canvas';
+ const density=2;canvas.width=Math.max(1,Math.round(width*density));canvas.height=Math.max(1,Math.round(height*density));
+ const ctx=canvas.getContext('2d');ctx.scale(canvas.width/width,canvas.height/height);
+ if(frame.classList.contains('avatar')){ctx.beginPath();ctx.ellipse(width/2,height/2,width/2,height/2,0,0,Math.PI*2);ctx.clip();}
+ const sourceWidth=img.naturalWidth,sourceHeight=img.naturalHeight;
+ const coverScale=Math.max(imageRect.width/sourceWidth,imageRect.height/sourceHeight);
+ const drawnWidth=sourceWidth*coverScale,drawnHeight=sourceHeight*coverScale;
+ const cropX=Number(img.dataset.cropX??50)/100,cropY=Number(img.dataset.cropY??50)/100;
+ const left=imageRect.left-frameRect.left-(parseFloat(frameStyle.borderLeftWidth)||0);
+ const top=imageRect.top-frameRect.top-(parseFloat(frameStyle.borderTopWidth)||0);
+ ctx.drawImage(img,left+(imageRect.width-drawnWidth)*cropX,top+(imageRect.height-drawnHeight)*cropY,drawnWidth,drawnHeight);
+ return canvas;
+}
 function prepareExportClone(){
  const clone=card.cloneNode(true);
  const {width}=getExportDimensions();
  clone.style.cssText += `;position:fixed!important;left:-100000px!important;top:0!important;width:${width}px!important;max-width:none!important;height:auto!important;min-height:0!important;aspect-ratio:auto!important;overflow:visible!important;margin:0!important;transform:none!important;`;
+ const liveCropImages=[...card.querySelectorAll('.avatar img,.char-image img')];
+ const cloneCropImages=[...clone.querySelectorAll('.avatar img,.char-image img')];
+ liveCropImages.forEach((img,index)=>cloneCropImages[index].replaceWith(createCroppedExportCanvas(img)));
  clone.querySelectorAll('button,input[type=file],.character-crop-editor').forEach(el=>el.remove());
  clone.querySelectorAll('input,select,textarea').forEach(el=>{
   let value=el.value||'';
   if(el.tagName==='SELECT')value=el.options[el.selectedIndex]?.text||value;
   const div=document.createElement('div');div.className='export-field '+(el.className||'');div.id=el.id;div.textContent=value||el.placeholder||'';
-  div.style.cssText='font:inherit;color:inherit;white-space:pre-wrap;overflow-wrap:anywhere;box-sizing:border-box;min-width:0;'; if(el.id==='nicknamePreview'||el.id==='twitterPreview'){const live=card.querySelector('#'+el.id);const computed=live?getComputedStyle(live):null;div.style.flex='0 0 auto';div.style.width=Math.ceil(live?.getBoundingClientRect().width||100)+'px';if(computed){div.style.font=computed.font;div.style.color=computed.color;div.style.lineHeight=computed.lineHeight;}}; if(el.classList.contains('char-name')){div.style.display='flex';div.style.alignItems='center';div.style.justifyContent='flex-start';div.style.height='100%';div.style.minHeight='64px';div.style.padding='4px 2px';}
-  if(el.classList.contains('content-edit')){div.style.minHeight=Math.max(96,el.scrollHeight)+'px';div.style.width='100%';}
+  div.style.cssText='font:inherit;color:inherit;white-space:pre-wrap;overflow-wrap:anywhere;box-sizing:border-box;min-width:0;'; if(el.id==='nicknamePreview'||el.id==='twitterPreview'){const live=card.querySelector('#'+el.id);const computed=live?getComputedStyle(live):null;div.style.flex='0 0 auto';div.style.width=Math.ceil(live?.getBoundingClientRect().width||100)+'px';if(computed){div.style.font=computed.font;div.style.color=computed.color;div.style.lineHeight=computed.lineHeight;}}; if(el.classList.contains('char-name')){div.style.display='flex';div.style.alignItems='center';div.style.justifyContent='flex-start';div.style.height='100%';div.style.minHeight='100px';div.style.padding='4px 2px';}
+  if(el.classList.contains('content-edit')){const style=getComputedStyle(el);div.style.font=style.font;div.style.lineHeight=style.lineHeight;div.style.color=style.color;div.style.minHeight=Math.max(96,el.scrollHeight)+'px';div.style.width='100%';}
   if(el.classList.contains('profile-input')){const original=el.id?card.querySelector('#'+el.id):null;if(original){const style=getComputedStyle(original);div.style.font=style.font;div.style.color=style.color;div.style.lineHeight=style.lineHeight;}div.style.borderBottom='0';div.style.minHeight='1.25em';}
   el.replaceWith(div);
  });
@@ -805,6 +893,7 @@ $('download').addEventListener('click',async()=>{
   fitMessage();
   await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
   const renderer=await loadHtml2Canvas();
+  await Promise.all([...card.querySelectorAll('.avatar img,.char-image img')].map(waitForCropImage));
   clone=prepareExportClone();
   await new Promise(resolve=>requestAnimationFrame(resolve));
   const width=Math.max(1,Math.ceil(clone.getBoundingClientRect().width));
@@ -834,22 +923,23 @@ $('resetAll').addEventListener('click',()=>{
  $('removeFont').hidden=true;
  document.querySelectorAll('.controls details').forEach(details=>details.open=false);
  card.removeAttribute('style');
- card.querySelectorAll('.profile-input,#profileExtraPreview,.info-box .selected-tags,.info-box .section-title').forEach(el=>{
+ card.querySelectorAll('.profile-input,#profileExtraPreview,.info-box .selected-tags,.info-box .section-title,.note .section-title,.note .content-edit').forEach(el=>{
   el.style.removeProperty('color');el.style.removeProperty('font-size');
  });
+ card.querySelectorAll('.selected-tags').forEach(el=>{el.style.removeProperty('--choice-tag-size');el.style.removeProperty('--choice-tag-color');});
  const avatar=$('avatar');avatar.querySelectorAll('img,.avatar-placeholder').forEach(el=>el.remove());
  const placeholder=document.createElement('span');placeholder.className='avatar-placeholder';placeholder.append('＋',document.createElement('br'),'이미지 추가');avatar.prepend(placeholder);
  $('nicknamePreview').value='';$('twitterPreview').value='';$('agePreview').value='성인';
- $('titleDetailPreview').textContent='';messageField.value='';fitMessage();
+ $('titleDetailPreview').textContent='';messageField.value='';$('freeEditor').value='';fitMessage();
  selectedProfileExtra.clear();renderProfileExtra();
  choices=Object.fromEntries(Object.entries(initialChoices).map(([key,items])=>[key,[...items]]));
  selected={genre:[],tendency:[],fandom:[],mine:[]};
  $('characters').replaceChildren();charCount=0;
  applyTheme('olympos');
  $('bgOpacity').dispatchEvent(new Event('input',{bubbles:true}));
- renderChoiceEditor();renderSelectedTags();addCharacter();refreshCropTargets();fitProfileIdentity();queuePixelSizeUpdate();
+ renderChoiceEditor();renderSelectedTags();syncChoiceSizeControls();addCharacter();refreshCropTargets();fitProfileIdentity();queuePixelSizeUpdate();
 });
-applyTheme('olympos');refreshCropTargets();renderChoiceEditor();renderSelectedTags();addCharacter();fitProfileIdentity();queuePixelSizeUpdate();
+applyTheme('olympos');refreshCropTargets();renderChoiceEditor();renderSelectedTags();syncChoiceSizeControls();addCharacter();fitProfileIdentity();queuePixelSizeUpdate();
 </script>
 </body>
 </html>
